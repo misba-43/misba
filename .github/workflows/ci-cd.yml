@@ -1,0 +1,64 @@
+name: Node.js CI/CD
+
+# Trigger on push to main or pull request
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Cache node_modules
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Run tests (or server start check)
+      - name: Test / Start server
+        run: |
+          npm install -g wait-on
+          node server.js &
+          sleep 5
+          wait-on http://localhost:3000 || exit 1
+
+      # CI Check complete
+      - name: CI complete
+        run: echo "Build & server start successful"
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Deploy to Render (example using Render CLI)
+      - name: Install Render CLI
+        run: npm install -g @render/cli
+
+      - name: Deploy to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          render services deploy SERVICE_ID_HERE
