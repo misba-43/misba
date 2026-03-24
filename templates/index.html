@@ -12,9 +12,15 @@
             font-family: 'Segoe UI', sans-serif;
         }
 
+        /* 🌈 BACKGROUND (PINK → BLUE → GREEN → YELLOW) */
         body {
-            background: linear-gradient(to right, #d4f1f4, #d8f3dc);
-            color: #023e8a;
+            background: linear-gradient(135deg,
+                #ffd6e0,
+                #cde7ff,
+                #d4f8e8,
+                #fff3b0
+            );
+            color: #2c003e;
             text-align: center;
         }
 
@@ -22,71 +28,117 @@
             padding: 50px 20px;
         }
 
+        /* ✨ STRONG GLOW TEXT */
         header h1 {
             font-size: 42px;
-            margin-bottom: 10px;
+            color: #2c003e;
+            text-shadow:
+                0 0 5px #ff69b4,
+                0 0 10px #00b4ff,
+                0 0 20px #00ff9f,
+                0 0 30px #ffd166,
+                0 0 40px #ff69b4;
         }
 
         header p {
             font-size: 18px;
-            color: #055160;
+            color: #333;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
         }
 
         section {
             padding: 50px 20px;
         }
 
+        /* ✨ GLOW HEADINGS */
         h2 {
             font-size: 28px;
             margin-bottom: 20px;
+            color: #ff4d6d;
+            text-shadow:
+                0 0 5px #ff69b4,
+                0 0 10px #ffd166,
+                0 0 20px #00b4ff;
         }
 
+        /* 💎 CARD */
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             width: 70%;
             margin: 20px auto;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(255,105,180,0.5);
         }
 
         .project {
             margin: 8px 0;
-            font-size: 17px;
         }
 
+        /* 💻 SKILLS */
+        .skill-bar {
+            background: #eee;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .skill-fill {
+            height: 10px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ff69b4, #00b4ff, #00ff9f, #ffd166);
+        }
+
+        /* 🏆 BADGES */
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ff69b4, #00b4ff, #ffd166);
+            color: white;
+            font-size: 14px;
+            text-shadow: 0 0 5px white;
+        }
+
+        /* ✨ INPUT */
         input, textarea {
             width: 80%;
             padding: 12px;
             margin: 10px 0;
-            border-radius: 8px;
-            border: 1px solid #90e0ef;
+            border-radius: 10px;
+            border: none;
             outline: none;
         }
 
         input:focus, textarea:focus {
-            border-color: #00b4d8;
+            box-shadow: 0 0 10px #00b4ff;
         }
 
+        /* 🌈 BUTTON */
         button {
             padding: 12px 30px;
             border: none;
             border-radius: 25px;
-            background-color: #00b4d8;
+            background: linear-gradient(135deg, #ff69b4, #00b4ff, #ffd166);
             color: white;
             font-size: 16px;
             cursor: pointer;
+            text-shadow: 0 0 5px white;
         }
 
         button:hover {
-            background-color: #0077b6;
+            box-shadow: 0 0 20px #ffd166;
         }
 
         footer {
             padding: 20px;
-            margin-top: 40px;
             font-size: 14px;
-            color: #055160;
         }
 
     </style>
@@ -94,46 +146,88 @@
 
 <body>
 
-    <header>
-        <h1>Misba Khan ✨</h1>
-        <p>Welcome to my Portfolio</p>
-    </header>
+<header>
+    <h1>✨ Misba Khan ✨</h1>
+    <p>Welcome to my Portfolio</p>
+</header>
 
-    <section>
-        <h2>About Me</h2>
-        <div class="card">
-            <p>
-                Hello, I am Misba Khan.  
-                I am passionate about Web Development and Backend programming.  
-                I enjoy building clean and user-friendly websites.
-            </p>
-        </div>
-    </section>
+<section>
+    <h2>💫 About Me</h2>
+    <div class="card">
+        <p>Hello, I am Misba Khan, a passionate BCA student.</p>
+        <p>I enjoy building modern and user-friendly web applications.</p>
+        <p>My goal is to grow as a developer and create impactful projects.</p>
+    </div>
+</section>
 
-    <section>
-        <h2>Projects</h2>
-        <div class="card">
-            <p class="project">• Portfolio Website</p>
-            <p class="project">• Contact Form with Node.js</p>
-            <p class="project">• Message Storage using Backend</p>
-        </div>
-    </section>
+<section>
+    <h2>🎓 Academic Journey</h2>
+    <div class="card">
+        <p><b>St. Mary’s School</b> – 85%</p>
+        <p><b>St. Anne’s PU College</b> – 96%</p>
+        <p><b>BCA – Kristu Jayanti University (Current)</b></p>
+    </div>
+</section>
 
-    <section>
-        <h2>Contact Me</h2>
-        <div class="card">
-            <form action="/submit" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit">Send</button>
-</form>
-        </div>
-    </section>
+<section>
+    <h2>💻 Technical Skills</h2>
+    <div class="card">
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
 
-    <footer>
-        © 2026 Misba Khan
-    </footer>
+        <p>CSS</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+
+        <p>JavaScript</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+
+        <p>MySQL</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+
+        <p>MongoDB</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+
+        <p>GitHub</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+    </div>
+</section>
+
+<section>
+    <h2>🏆 Certifications</h2>
+    <div class="card">
+        <span class="badge">Front-End Development</span>
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">Git & GitHub</span>
+    </div>
+</section>
+
+<section>
+    <h2>💻 Projects</h2>
+    <div class="card">
+        <p class="project">• Portfolio Website</p>
+        <p class="project">• Contact Form with Node.js</p>
+        <p class="project">• Backend Data Storage</p>
+    </div>
+</section>
+
+<!-- 🔒 FORM UNCHANGED -->
+<section>
+    <h2>💌 Contact Me</h2>
+    <div class="card">
+        <form action="/submit" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send 💖</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    © 2026 Misba Khan
+</footer>
 
 </body>
 </html>
